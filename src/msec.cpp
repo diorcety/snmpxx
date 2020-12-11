@@ -74,7 +74,7 @@ namespace Snmp_pp {
 
 #if !defined HAVE_LOCALTIME_R && !defined HAVE_REENTRANT_LOCALTIME
 #ifdef _THREADS
-SnmpSynchronized m_localtime_mutex;
+SnmpSynchronized msec::m_localtime_mutex;
 #endif
 #endif
 
