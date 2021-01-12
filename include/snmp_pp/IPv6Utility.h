@@ -67,7 +67,9 @@
 
 const char * inet_ntop(int af, const void *src, char *dst, size_t size);
 
-//int inet_pton(int af, PCTSTR src, void *dst);
+#if _WIN32_WINNT < 0x0600
+int inet_pton(int af, PCTSTR src, void *dst);
+#endif
 
 #endif // defined(WIN32) && defined(SNMP_PP_IPv6)
 

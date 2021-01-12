@@ -70,6 +70,7 @@ char notifyqueue_version[]="#(@) SNMP++ $Id$";
 
 #include "snmp_pp/config_snmp_pp.h"
 #include "snmp_pp/v3.h"
+#include "snmp_pp/IPv6Utility.h"
 #include "snmp_pp/notifyqueue.h" // queue for holding sessions waiting for async notifications
 #include "snmp_pp/eventlistholder.h"
 #include "snmp_pp/uxsnmp.h"

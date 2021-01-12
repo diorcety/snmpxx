@@ -71,7 +71,7 @@
  * sizeof(int) < 4.  sizeof(int) > 4 is fine; all the world's not a VAX.
  */
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && _MSC_VER < 1900
 static int
 snprintf (char *str, int n, char *fmt, ...)
 {
@@ -262,7 +262,7 @@ static int inet_pton6(const char *src, unsigned char *dst);
  * author:
  *	Paul Vixie, 1996.
  */
-/* Not needed with Winsock 2 
+#if _WIN32_WINNT < 0x0600
 int
 inet_pton(int af,
 	  const char *src,
@@ -275,13 +275,11 @@ inet_pton(int af,
 	case AF_INET6:
 		return (inet_pton6(src, (unsigned char *)dst));
 #endif
-	default:
-		errno = EAFNOSUPPORT;
-		return (-1);
 	}
-	/ * NOTREACHED * /
+	errno = EAFNOSUPPORT;
+	return (-1);
 }
-*/
+#endif
 
 /* int
  * inet_pton4(src, dst)
