@@ -88,8 +88,8 @@ DLLOPT void debughexcprintf(int db_level, const char* comment,
 
 #else
 
-#ifndef _MSC_VER
-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+#if !defined(_MSC_VER) || defined(__clang__)
+#if (defined(__GNUC__) || defined(__clang__)) && !defined(__STRICT_ANSI__)
 #define debugprintf(db_level,format...)
 #else
 void debugprintf(int db_level, const char *format, ...);
